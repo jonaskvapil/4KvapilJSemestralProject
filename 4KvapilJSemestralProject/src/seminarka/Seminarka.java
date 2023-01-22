@@ -23,66 +23,25 @@ public class Seminarka {
             if (input.equals("a")){
             System.out.println("Zadej prvni posloupnost");
             String firstSequence = scanner.nextLine();
-            int[] firstArray = CreateArray(firstSequence);
+            int[] firstArray = Tools.CreateArray(firstSequence);
             System.out.println("Zadej druhou posloupnost");
             String secondSequence = scanner.nextLine();
-            int[] secondArray = CreateArray(secondSequence);
+            int[] secondArray = Tools.CreateArray(secondSequence);
             System.out.println("Zadej treti posloupnost");
             String thirdSequence = scanner.nextLine();
-            int[] thirdArray = CreateArray(thirdSequence);
+            int[] thirdArray = Tools.CreateArray(thirdSequence);
             System.out.println("Vysledna posloupnost");
-            SortArray(firstArray, secondArray, thirdArray);
+            Tools.SortArray(firstArray, secondArray, thirdArray);
             System.out.println(" ");
             
             } else if (input.equals("n")) {
                 pokracovat = false;
+            }else{
+                System.out.println("Nezadal jste správný parametr, zkuste to znovu.");
             }  
             
         }
 
     }
-
-    public static int[] CreateArray(String input) {
-        String[] numberString = input.split(" ");
-        int negativeIndex = 0;
-        int[] numbers = new int[numberString.length];
-
-        for (int i = 0; i < numberString.length; i++) {
-            numbers[i] = Integer.parseInt(numberString[i]);
-            if (numbers[i] < 0) {
-                negativeIndex = i;
-                break;
-            }
-        }
-        int[] numbersNegative = new int[negativeIndex];
-
-        for (int i = 0; i < numbersNegative.length; i++) {
-            numbersNegative[i] = numbers[i];
-        }
-        return numbersNegative;
-    }
-
-    public static void SortArray(int[] firstArray, int[] secondArray, int[] thirdArray) {
-        int length = firstArray.length + secondArray.length + thirdArray.length;
-        int[] mergedArray = new int[length];
-        int pos = 0;
-        for (int element : firstArray) {
-            mergedArray[pos] = element;
-            pos++;
-        }
-        for (int element : secondArray) {
-            mergedArray[pos] = element;
-            pos++;
-        }
-        for (int element : thirdArray) {
-            mergedArray[pos] = element;
-            pos++;
-        }
-
-        Arrays.sort(mergedArray);
-
-        for (int i = 0; i < mergedArray.length; i++) {
-            System.out.print(mergedArray[i] + " ");
-        }
-    }
+  
 }
